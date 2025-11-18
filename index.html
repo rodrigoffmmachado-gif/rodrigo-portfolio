@@ -1,764 +1,920 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Portfólio - Rodrigo Machado</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfólio profissional de Rodrigo Machado, Engenheiro de Produção e especialista em dados, melhoria contínua e siderurgia." />
-  <style>
-    :root {
-      --bg: #0f172a;
-      --bg-light: #111827;
-      --primary: #38bdf8;
-      --primary-soft: rgba(56, 189, 248, 0.15);
-      --text: #e5e7eb;
-      --text-soft: #9ca3af;
-      --card: #020617;
-      --border: #1f2933;
-      --accent: #22c55e;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1d283a 0, #020617 50%, #000 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* NAVBAR */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), transparent);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 0;
-    }
-
-    .nav-logo {
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      color: var(--text-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--text-soft);
-      position: relative;
-      padding-bottom: 0.15rem;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 0;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      transition: width 0.2s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 3.5rem 0 2.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .hero-title {
-      font-size: clamp(2rem, 3vw, 2.6rem);
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-title span {
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--text-soft);
-      max-width: 480px;
-      margin-bottom: 1.2rem;
-    }
-
-    .tagline {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 0.4rem;
-    }
-
-    .tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text);
-      transition: all 0.15s ease-in-out;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #2563eb);
-      border-color: transparent;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.5);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      margin-top: 0.9rem;
-    }
-
-    .hero-meta span {
-      color: var(--primary);
-    }
-
-    .hero-photo-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-photo-card {
-      border-radius: 24px;
-      padding: 0.7rem;
-      background: radial-gradient(circle at top left, var(--primary-soft), var(--bg-light));
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      max-width: 260px;
-      width: 100%;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.8);
-    }
-
-    .hero-photo-inner {
-      border-radius: 18px;
-      overflow: hidden;
-      background: #020617;
-      aspect-ratio: 3 / 4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-soft);
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .hero-photo-inner span {
-      opacity: 0.9;
-    }
-
-    .hero-photo-footer {
-      margin-top: 0.7rem;
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      text-align: center;
-    }
-
-    /* SEÇÕES */
-    section {
-      padding: 2.5rem 0;
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-    }
-
-    .section-header {
-      margin-bottom: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .section-subtitle {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    /* SOBRE */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .about-text {
-      font-size: 0.94rem;
-      color: var(--text-soft);
-    }
-
-    .about-text p + p {
-      margin-top: 0.75rem;
-    }
-
-    .about-info-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 1rem 1.2rem;
-      font-size: 0.83rem;
-      color: var(--text-soft);
-    }
-
-    .about-info-card div + div {
-      margin-top: 0.4rem;
-    }
-
-    .label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-soft);
-    }
-
-    .value {
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.9rem;
-    }
-
-    .skill-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      padding: 0.75rem 0.9rem;
-      font-size: 0.83rem;
-    }
-
-    .skill-name {
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-
-    .skill-tag {
-      display: inline-flex;
-      padding: 0.16rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.7rem;
-      color: var(--text-soft);
-      margin-top: 0.2rem;
-    }
-
-    /* PROJETOS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 1.8rem;
-    }
-
-    .project-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 1rem 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .project-title {
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .project-meta {
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      margin-bottom: 0.6rem;
-    }
-
-    .project-body {
-      font-size: 0.84rem;
-      color: var(--text-soft);
-    }
-
-    .project-body ul {
-      margin-top: 0.5rem;
-      padding-left: 1.1rem;
-    }
-
-    .project-body li {
-      margin-bottom: 0.25rem;
-    }
-
-    .project-badge {
-      font-size: 0.7rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--text-soft);
-      margin-top: 0.6rem;
-    }
-
-    .project-preview {
-      background: radial-gradient(circle at top, var(--primary-soft), rgba(15, 23, 42, 0.9));
-      border-radius: 16px;
-      border: 1px dashed rgba(148, 163, 184, 0.4);
-      padding: 1rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    /* CONTATO */
-    .contact-card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 1rem 1.3rem;
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
-      gap: 1.6rem;
-      font-size: 0.86rem;
-    }
-
-    .contact-row {
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-row span {
-      color: var(--text-soft);
-      font-size: 0.8rem;
-    }
-
-    .contact-highlight {
-      font-size: 0.94rem;
-      color: var(--primary);
-      font-weight: 500;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-      padding: 1.2rem 0 2rem;
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      text-align: center;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 900px) {
-      .hero,
-      .about-grid,
-      .projects-grid,
-      .contact-card {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 2.5rem;
-      }
-
-      .hero-photo-wrapper {
-        order: -1;
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero-title {
-        font-size: 1.8rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.9rem;
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Machado | Engenheiro de Produção & Metalurgia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis CSS - Tema Industrial */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --metal-color: #7f8c8d;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+            --spacing: 8px;
+            --border-radius: 4px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* Header e Navegação */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Sobre */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .skill {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .skill-metal {
+            background-color: var(--metal-color);
+        }
+
+        /* Experiência */
+        .experience {
+            background-color: #f8f9fa;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--text-light);
+            border: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            top: 15px;
+            right: -10px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--text-light);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Competências */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .competency-card {
+            background-color: var(--text-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .competency-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .competency-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Formação */
+        .education {
+            background-color: #f8f9fa;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background-color: var(--text-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .education-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Objetivos */
+        .goals-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .goals-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .goal-item {
+            background-color: var(--text-light);
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+        }
+
+        /* Contato */
+        .contact {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .contact .section-title::after {
+            background-color: var(--text-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border: none;
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: 2px solid var(--secondary-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 1.5rem 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left, .right {
+                left: 0;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header>
-    <div class="container">
-      <nav class="nav">
-        <div class="nav-logo">Rodrigo Machado • Portfólio</div>
-        <div class="nav-links">
-          <a href="#sobre">Sobre</a>
-          <a href="#skills">Habilidades</a>
-          <a href="#projetos">Projetos</a>
-          <a href="#contato">Contato</a>
+    <!-- Header e Navegação -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Rodrigo<span>Machado</span></a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link">Experiência</a></li>
+                    <li class="nav-item"><a href="#competencies" class="nav-link">Competências</a></li>
+                    <li class="nav-item"><a href="#education" class="nav-link">Formação</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="container">
-      <div class="hero">
-        <div>
-          <div class="tagline">
-            <span class="tag-dot"></span>
-            Dados • Processos • Siderurgia
-          </div>
-          <h1 class="hero-title">
-            Rodrigo Machado<br />
-            <span>Engenharia de Produção & Dados</span>
-          </h1>
-          <p class="hero-subtitle">
-            Engenheiro de Produção com experiência em supervisão de alto-forno, melhoria contínua e análise de dados.
-            Atuo integrando operação industrial, métricas de desempenho e ferramentas como Power BI, Excel e Python
-            para aumentar eficiência e reduzir desperdícios.
-          </p>
-
-          <div class="hero-buttons">
-            <!-- Altere o link para o seu currículo em PDF -->
-            <a href="#" class="btn btn-primary">Baixar currículo (PDF)</a>
-            <a href="#contato" class="btn btn-outline">Entrar em contato</a>
-          </div>
-
-          <div class="hero-meta">
-            <div><span>Áreas de interesse:</span> Engenheiro de Produção, Analista de Processos, Dados & Melhoria Contínua</div>
-            <div><span>Local:</span> Minas Gerais • Brasil</div>
-          </div>
-        </div>
-
-        <div class="hero-photo-wrapper">
-          <div class="hero-photo-card">
-            <!-- Substitua o conteúdo abaixo pela sua foto:
-                 Exemplo:
-                 <img src="minha-foto-crea.jpg" alt="Foto profissional de Rodrigo Machado" class="hero-photo-inner" />
-            -->
-            <div class="hero-photo-inner">
-              <span>Insira aqui sua<br />foto profissional<br />para o portfólio.</span>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Rodrigo Machado</h1>
+                <h2 class="hero-subtitle">Engenheiro de Produção | Especialista em Metalurgia</h2>
+                <p class="hero-text">Profissional com 4 anos de experiência em alto-forno, processos industriais e melhoria contínua. Atuação com liderança operacional, análise de dados e ferramentas Lean.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn">Entrar em Contato</a>
+                    <a href="https://wa.me/5531988999103" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#about" class="btn btn-outline">Saiba Mais</a>
+                </div>
+                
+                <div class="hero-badges">
+                    <span class="badge">Alto-Forno</span>
+                    <span class="badge">Processos Industriais</span>
+                    <span class="badge">Melhoria Contínua</span>
+                    <span class="badge">Power BI</span>
+                    <span class="badge">Lean Manufacturing</span>
+                </div>
             </div>
-            <div class="hero-photo-footer">
-              Foto profissional recomendada: fundo neutro, boa iluminação, enquadramento de busto.
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- SOBRE -->
-    <section id="sobre">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Sobre mim</h2>
-          <p class="section-subtitle">Resumo profissional</p>
+    <!-- Sobre -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="" alt="Rodrigo Machado">
+                </div>
+                <div class="about-text">
+                    <p>Engenheiro de Produção com especialização em Engenharia Metalúrgica e Processos de Materiais. Com 4 anos de experiência como Supervisor de Alto-Forno, desenvolvi expertise em processos industriais, melhoria contínua e liderança de equipes.</p>
+                    <p>Atuo com foco em análise de dados, Power BI, Excel avançado e ferramentas Lean para otimização de processos e redução de desperdícios. Minha experiência inclui coordenação de manutenções, implementação de ações corretivas e melhoria de indicadores de produtividade.</p>
+                    <p>Busco oportunidades como Analista de Processos, Melhoria Contínua, Produção, Qualidade ou Supervisão Industrial, onde possa aplicar meus conhecimentos para agregar valor aos processos organizacionais.</p>
+                    
+                    <h3>Principais Habilidades</h3>
+                    <div class="skills">
+                        <span class="skill">Melhoria Contínua</span>
+                        <span class="skill">Lean Manufacturing</span>
+                        <span class="skill">PDCA</span>
+                        <span class="skill">5S</span>
+                        <span class="skill skill-metal">Alto-Forno</span>
+                        <span class="skill skill-metal">Processos Metalúrgicos</span>
+                        <span class="skill">Power BI</span>
+                        <span class="skill">Excel Avançado</span>
+                        <span class="skill">Gestão de Equipes</span>
+                        <span class="skill">Indicadores de Performance</span>
+                        <span class="skill">Análise de Dados</span>
+                        <span class="skill">Qualidade</span>
+                        <span class="skill">Segurança Industrial</span>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              Sou Engenheiro de Produção com experiência na área siderúrgica, atuando na supervisão de alto-forno e na
-              gestão de processos industriais. Tenho vivência prática em liderança de equipes, controle de produção e
-              garantia da qualidade, sempre com foco em segurança, eficiência operacional e redução de custos.
-            </p>
-            <p>
-              Nos últimos anos desenvolvi forte interesse em dados, utilizando ferramentas como Power BI, Excel e Python
-              para criar painéis de desempenho, análises de indicadores e estudos de melhoria contínua. Busco integrar a
-              visão de chão de fábrica com a análise quantitativa, apoiando a tomada de decisão e a implementação de
-              melhorias sustentáveis.
-            </p>
-            <p>
-              Atualmente, estou em transição para oportunidades que valorizem essa combinação de <strong>engenharia de
-              produção</strong>, <strong>análise de dados</strong> e <strong>melhoria contínua</strong>, seja como Engenheiro de Produção,
-              Analista de Processos ou profissional de dados aplicado à indústria.
-            </p>
-          </div>
-
-          <aside class="about-info-card">
-            <div>
-              <div class="label">Nome</div>
-              <div class="value">Rodrigo Francisco Ferreira Martinho Machado</div>
-            </div>
-            <div>
-              <div class="label">Cargo desejado</div>
-              <div class="value">
-                Engenheiro de Produção • Analista de Processos • Dados & Melhoria Contínua
-              </div>
-            </div>
-            <div>
-              <div class="label">Contato</div>
-              <div class="value">
-                <!-- Substitua pelo seu telefone -->
-                <strong>E-mail:</strong> rodrigoffmmachado@gmail.com<br />
-                <strong>Telefone:</strong> (00) 00000-0000<br />
-                <strong>Cidade/Estado:</strong> Minas Gerais • Brasil
-              </div>
-            </div>
-            <div>
-              <div class="label">Formação</div>
-              <div class="value">
-                Graduação em Engenharia de Produção<br />
-                Pós-graduação em Engenharia Metalúrgica e Processos de Materiais
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Habilidades & Ferramentas</h2>
-          <p class="section-subtitle">Principais competências técnicas e de gestão</p>
+    <!-- Experiência -->
+    <section id="experience" class="section experience">
+        <div class="container">
+            <h2 class="section-title">Experiência Profissional</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2024 (4 anos)</div>
+                        <h3>Supervisor de Alto-Forno</h3>
+                        <p>Liderança de equipe operacional e estabilidade de processo em ambiente de alto-forno.</p>
+                        <ul>
+                            <li>• Redução de desperdícios por meio de análise de causa-raiz</li>
+                            <li>• Coordenação de manutenções e ações corretivas rápidas</li>
+                            <li>• Melhoria de indicadores como produtividade e consumo</li>
+                            <li>• Implementação de práticas Lean e melhoria contínua</li>
+                            <li>• Gestão de equipe operacional e desenvolvimento de colaboradores</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-name">Power BI</div>
-            <div>Criação de dashboards de desempenho, indicadores operacionais e análises visuais para apoio à decisão.</div>
-            <div class="skill-tag">Dados • Visualização</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">Excel</div>
-            <div>Modelagem de dados, planilhas de controle, análise de indicadores e automação básica.</div>
-            <div class="skill-tag">Análise • Gestão</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">Python</div>
-            <div>Análise de dados, automação de rotinas e suporte a estudos de desempenho e produtividade.</div>
-            <div class="skill-tag">Dados • Automação</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">Lean / Melhoria Contínua</div>
-            <div>Identificação de desperdícios, padronização de processos e busca por aumento de eficiência.</div>
-            <div class="skill-tag">Kaizen • Eficiência</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">Gestão de Processos</div>
-            <div>Mapeamento, análise e controle de processos industriais com foco em resultados.</div>
-            <div class="skill-tag">Processos • Indicadores</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">Siderurgia / Alto-forno</div>
-            <div>Experiência em supervisão de produção de ferro-gusa, controle operacional e segurança.</div>
-            <div class="skill-tag">Indústria • Operação</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">Supervisão & Liderança</div>
-            <div>Condução de equipes, gestão de turnos e alinhamento de metas de produção e qualidade.</div>
-            <div class="skill-tag">Liderança • Equipes</div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-name">AutoCAD, NR-10, etc.</div>
-            <div>Conhecimentos complementares em desenho técnico, segurança em instalações elétricas e normas.</div>
-            <div class="skill-tag">Engenharia • Segurança</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- PROJETOS -->
-    <section id="projetos">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Projetos em Destaque</h2>
-          <p class="section-subtitle">Exemplos de aplicações em dados e processos</p>
-        </div>
-
-        <div class="projects-grid">
-          <!-- PROJETO POWER BI -->
-          <article class="project-card">
-            <h3 class="project-title">Painel Power BI de Desempenho Operacional</h3>
-            <div class="project-meta">
-              Ferramentas: Power BI • Excel • Engenharia de Produção
+    <!-- Competências -->
+    <section id="competencies" class="section">
+        <div class="container">
+            <h2 class="section-title">Competências Técnicas</h2>
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Melhoria Contínua</h3>
+                    <p>Lean Manufacturing, PDCA, 5S, Kaizen, análise de causa-raiz e redução de desperdícios.</p>
+                </div>
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Processos Industriais</h3>
+                    <p>Alto-forno, processos metalúrgicos, gestão da produção, controle de qualidade e segurança industrial.</p>
+                </div>
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Análise de Dados</h3>
+                    <p>Power BI, Excel avançado, indicadores de performance, KPI's e relatórios gerenciais.</p>
+                </div>
+                <div class="competency-card">
+                    <div class="competency-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gestão de Pessoas</h3>
+                    <p>Liderança de equipes, treinamento, desenvolvimento de colaboradores e gestão de performance.</p>
+                </div>
             </div>
-            <div class="project-body">
-              <p>
-                Desenvolvimento de um painel de desempenho operacional para acompanhamento da produção em ambiente
-                industrial, com foco em eficiência, qualidade e redução de desperdícios.
-              </p>
-              <ul>
-                <li>Integração de dados de produção, paradas e consumo de insumos.</li>
-                <li>Criação de indicadores-chave (KPIs) como produtividade, rendimento e taxa de refugo.</li>
-                <li>Visão em tempo quase real para supervisão e tomada de decisão.</li>
-                <li>Apoio à identificação de gargalos e oportunidades de melhoria contínua.</li>
-              </ul>
-              <div class="project-badge">
-                ✔ Projeto alinhado à Indústria 4.0 e cultura de dados
-              </div>
-            </div>
-          </article>
-
-          <!-- LADO DIREITO: espaço para imagem ou descrição -->
-          <aside class="project-preview">
-            <strong>Como apresentar este projeto:</strong>
-            <ul>
-              <li>Inclua prints do dashboard em PNG/JPEG nesta área.</li>
-              <li>Mostre a tela principal com os KPIs mais importantes.</li>
-              <li>Se possível, oculte dados sensíveis da empresa e foque na estrutura.</li>
-              <li>Descreva, em entrevista, quais decisões o painel ajudou a melhorar.</li>
-            </ul>
-            <p style="margin-top:0.7rem;">
-              <!-- Dica: você pode substituir este bloco por uma imagem -->
-              Exemplo: &lt;img src="painel-powerbi.png" alt="Dashboard de desempenho operacional em Power BI" /&gt;
-            </p>
-          </aside>
         </div>
-      </div>
     </section>
 
-    <!-- CONTATO -->
-    <section id="contato">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Contato</h2>
-          <p class="section-subtitle">Como falar comigo</p>
+    <!-- Formação -->
+    <section id="education" class="section education">
+        <div class="container">
+            <h2 class="section-title">Formação Acadêmica</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Engenharia de Produção</h3>
+                    <p>Concluído em 2024</p>
+                    <p>Formação completa em Engenharia de Produção com foco em processos industriais e gestão.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Pós-graduação em Engenharia Metalúrgica</h3>
+                    <p>Em conclusão</p>
+                    <p>Especialização em Engenharia Metalúrgica e Processos de Materiais.</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Cursos e Certificações</h3>
+                    <ul>
+                        <li>• Excel Avançado</li>
+                        <li>• Power BI</li>
+                        <li>• NR-10</li>
+                        <li>• SolidWorks</li>
+                        <li>• AutoCAD</li>
+                        <li>• Inglês Básico</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <div class="contact-card">
-          <div>
-            <div class="contact-row">
-              <span>E-mail</span><br />
-              <div class="contact-highlight">rodrigoffmmachado@gmail.com</div>
-            </div>
-            <div class="contact-row">
-              <span>Telefone / WhatsApp</span><br />
-              <div class="contact-highlight">(00) 00000-0000</div>
-            </div>
-            <div class="contact-row">
-              <span>Local</span><br />
-              <div class="contact-highlight">Minas Gerais • Brasil</div>
-            </div>
-          </div>
-
-          <div class="contact-actions">
-            <div><strong>Como este portfólio ajuda você:</strong></div>
-            <div>• Enviar o link diretamente para recrutadores e gestores.</div>
-            <div>• Colocar na bio do LinkedIn ou em candidaturas online.</div>
-            <div>• Atualizar facilmente com novos projetos (Power BI, Python, processos).</div>
-            <div style="margin-top:0.6rem;">
-              Para entrar em contato, basta enviar um e-mail ou mensagem com o assunto:
-              <strong>"Oportunidade - Rodrigo Machado"</strong>.
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
-  </main>
 
-  <footer>
-    © <span id="year"></span> Rodrigo Machado · Portfólio profissional.
-  </footer>
+    <!-- Objetivos -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Objetivos Profissionais</h2>
+            <div class="goals-content">
+                <p>Busco oportunidades para aplicar minha experiência em engenharia e melhoria contínua em posições que valorizem a otimização de processos e a excelência operacional.</p>
+                <div class="goals-list">
+                    <div class="goal-item">Analista de Processos</div>
+                    <div class="goal-item">Melhoria Contínua</div>
+                    <div class="goal-item">Produção</div>
+                    <div class="goal-item">Qualidade</div>
+                    <div class="goal-item">Engenharia Jr</div>
+                    <div class="goal-item">Supervisão Industrial</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Atualiza o ano automaticamente
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- Contato -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Localização</h3>
+                            <p>Minas Gerais — Disponível para mudança</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>rodrigoffmmachado@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Telefone/WhatsApp</h3>
+                            <p>(31) 98899-9102</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h3>Áreas de Interesse</h3>
+                            <p>Processos, Melhoria Contínua, Produção, Qualidade</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://www.linkedin.com/in/rodrigoffmm/" target="_blank" style="color: var(--text-light);">linkedin.com/in/rodrigoffmm</a></p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Seu Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Assunto" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Sua Mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rodrigoffmm/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://wa.me/5531988999102" target="_blank" class="social-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:rodrigoffmmachado@gmail.com" class="social-link">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2024 Rodrigo Machado. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Efeito de rolagem suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu contato! Responderei em breve.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
